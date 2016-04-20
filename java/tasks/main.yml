@@ -1,0 +1,9 @@
+---
+
+# This PPA launchpad will work on both Debian & Ubuntu 
+
+- include: debian.yml
+  when: ansible_family == 'debian'
+
+- include: rhel.yml
+  when: ansible_family == 'rhel'

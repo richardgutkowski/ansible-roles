@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Stash Linux service controller script
+cd "{{ stashData }}/3.9.1/bin"
+
+case "$1" in
+    start)
+        ./start-stash.sh
+        ;;
+    stop)
+        ./stop-stash.sh
+        ;;
+    restart)
+        ./stop-stash.sh
+        ./start-stash.sh
+        ;;
+    *)
+        echo "Usage: $0 {start|restart|stop}"
+        exit 1
+        ;;
+esac

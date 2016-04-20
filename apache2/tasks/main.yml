@@ -1,0 +1,8 @@
+---
+# This role installs Apache 2
+
+- include: debian.yml
+  when: ansible_family == 'debian'
+
+- include: rhel.yml
+  when: ansible_family == 'rhel'

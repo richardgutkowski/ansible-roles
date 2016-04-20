@@ -1,0 +1,17 @@
+---
+
+stashServer: 8006
+stashHttp: 7990
+stashHome: /var/atlassian/application-data/stash
+stashData: /opt/atlassian/stash/3.9.1
+stashExec: atlassian-stash-3.9.1-x64.bin
+stashUrl: https://www.atlassian.com/software/stash/downloads/binary/{{ stashExec }}
+mysqlHost: localhost
+mysqlPort: 3306
+mysqlDatabase: stash
+mysqlUser: stash
+mysqlPasswd: stash
+mysqlConnectorJar: mysql-connector-java-5.1.35-bin.jar
+mysqlConnectorTar: mysql-connector-java-5.1.35.tar.gz
+mysqlConnectorDir: mysql-connector-java-5.1.35
+mysqlConnectorUrl: http://dev.mysql.com/get/Downloads/Connector-J/{{ mysqlConnectorTar }}

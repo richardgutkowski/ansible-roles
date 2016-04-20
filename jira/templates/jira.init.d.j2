@@ -1,0 +1,51 @@
+#!/bin/bash
+#### BEGIN INIT INFO
+# Provides:          jira
+# Required-Start:    $remote_fs $syslog $named $network $time
+# Required-Stop:     $remote_fs $syslog $named $network
+# Should-Start:      mysql
+# Should-Stop:       mysql
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start and stop the jira issue tracking
+# Description:       Controls the main JIRA server
+#                    and its accompanying application server.
+### END INIT INFO
+
+# Name of app ( JIRA, Confluence, etc )
+APP=jira
+# Name of the user to run as
+USER=jira
+# Location of application's bin directory
+BASE={{ jiraData }}/bin
+# Location of application's log directory
+LOGS=/opt/atlassian/jira/logs
+# Location of Java JDK
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
+case "$1" in
+  # Start command
+  start)
+    echo "Starting $APP"
+    /bin/su -m $USER -c "cd $LOGS && $BASE/bin/startup.sh &> /dev/null"
+    echo "$APP started"
+    ;;
+  # Stop command
+  stop)
+    echo "Stopping $APP"
+    /bin/su -m $USER -c "$BASE/bin/shutdown.sh &> /dev/null"
+    echo "$APP stopped successfully"
+    ;;
+   # Restart command
+   restart)
+        $0 stop
+        sleep 5
+        $0 start
+        ;;
+  *)
+    echo "Usage: /etc/init.d/$APP {start|restart|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
