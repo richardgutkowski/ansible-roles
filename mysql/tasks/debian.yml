@@ -1,0 +1,17 @@
+---
+
+  - name: Install MySQL with Apt
+    apt: name={ item } state=latest update_cache=yes
+    with_packages:
+      - {{ mysql_apt_packages }}
+
+#  - name: Create Mysql configuration file
+#    template: src=my.cnf.j2 dest=/etc/my.cnf
+#    notify:
+#    - restart mysql
+
+  - name: Create Application Database
+    mysql_db: name={{ db.name }} state=present
+
+  - name: Create Application DB User
+    mysql_user: name={{ db.user }} password={{ db.password }} priv=*.*:ALL host='%' state=present

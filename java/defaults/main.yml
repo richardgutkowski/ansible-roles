@@ -1,0 +1,4 @@
+---
+
+  java_version: "java-1.{{ java_version_nr }}.0-openjdk.x86_64"
+  java_version_nr: 8 # Default to latest version

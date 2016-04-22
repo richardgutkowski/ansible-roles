@@ -1,5 +1,5 @@
 ---
-  
+
 - name: Install Mysql package
   yum: name={{ item }} state=present
   with_items:
@@ -10,16 +10,17 @@
   seboolean: name=mysql_connect_any state=true persistent=yes
   when: sestatus.rc != 0
 
+- name: Configure SELinux to start mysql on any port
+  seboolean: name=mysql_connect_any state=true persistent=yes
+  when: ansible_selinux.status == "enabled"
+
 - name: Create Mysql configuration file
   template: src=my.cnf.j2 dest=/etc/my.cnf
   notify:
-  - restart mysql
-
-- name: Start Mysql Service
-  service: name=mysqld state=started enabled=yes
+  - restart mysqld
 
 - name: Create Application Database
-  mysql_db: name={{ dbname }} state=present
+  mysql_db: name={{ db.name }} state=present
 
 - name: Create Application DB User
-  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
+  mysql_user: name={{ db.user }} password={{ db.password }} priv=*.*:ALL host='%' state=present

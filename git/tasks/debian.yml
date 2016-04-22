@@ -1,0 +1,8 @@
+---
+sudo: true
+  - name: Add latest git repo
+    apt_repository: repo=ppa:git-core/ppa -y
+  - name: Update apt cache
+    apt: update_cache=yes cache_valid_time=3600
+  - name: Install latest git
+    apt: pkg=git
