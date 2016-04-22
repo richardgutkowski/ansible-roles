@@ -2,10 +2,18 @@
 # This role installs HAProxy and configures it.
 
 - name: Download and install haproxy and socat
-  yum: name={{ item }} state=present
+  yum: name={{ item }} state=latest
   with_items:
   - haproxy
   - socat
+  when: ansible_family == 'rhel'
+
+- name: Download and install haproxy and socat
+  apt: name={{ item }} state=latest
+  with_items:
+  - haproxy
+  - socat
+  when: ansible_family == 'debian'
 
 - name: Configure the haproxy cnf file with hosts
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg

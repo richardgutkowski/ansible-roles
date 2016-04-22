@@ -1,0 +1,12 @@
+---
+
+  db:
+    name: default
+    user: user
+    password: default
+
+  mysql_apt_packages:
+    - mysql-server
+    - mysql-client
+    - mysql-common
+    - mysql-python

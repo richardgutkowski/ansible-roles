@@ -1,0 +1,25 @@
+---
+# common package variables
+    sys_packages:
+      - "curl"
+      - "wget"
+      - "python-software-properties"
+      - "vim"
+    main_packages:
+      - "postfix"
+      - "redis-server"
+      - "memcached"
+      - "libmemcached-dev"
+      - "python"
+      - "python-setuptools"
+      - "python-pip"
+      - "python-dev"
+      - "libxslt1-dev"
+      - "libxml2-dev"
+      - "libz-dev"
+      - "libffi-dev"
+      - "libssl-dev"
+    pip_packages:
+      - "psycopg2"
+      - "python-memcached"
+      - "django-pylibmc"

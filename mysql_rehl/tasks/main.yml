@@ -1,8 +1,0 @@
----
-# This role will install MySQL and create db user and give permissions.
-
-- include: debian.yml
-  when: ansible_family == 'debian'
-
-- include: rhel.yml
-  when: ansible_family == 'rhel'
