@@ -1,0 +1,14 @@
+[{{ version_name }}]
+name=PostgreSQL {{ version_number }} $releasever - $basearch
+baseurl={{ base_url }}-$releasever-$basearch
+enabled=1
+gpgcheck=1
+gpgkey=
+
+[{{ version_name }}-source]
+name=PostgreSQL {{ version_number }} $releasever - $basearch - Source
+failovermethod=priority
+baseurl={{ base_url }}-$releasever-$basearch
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG-94

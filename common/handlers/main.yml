@@ -5,3 +5,6 @@
 
 - name: restart iptables
   service: name=iptables state=restarted
+
+- name: Restart redis
+  service: name=redis-server enabled=yes state=restarted

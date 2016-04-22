@@ -1,0 +1,22 @@
+---
+
+  version: 94
+  version_name: "pgdg{{ version }}"
+  version_number: 9.4
+  base_url: "https://download.postgresql.org/pub/repos/yum/{{ version_number }}/redhat/rhel"
+  base_source_url: "https://download.postgresql.org/pub/repos/yum/srpms/{{ version_number }}/redhat/rhel"
+  gpg_key: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG-{{ version }}"
+
+  pgsql:
+    admin: postgres
+    user: default
+    password: default
+    database: default
+    items:
+      - "postgresql-{{ version_number }}"
+      - "postgresql-client-{{ version_number }}"
+      - python-pygresql
+      - python-psycopg2
+      - "postgresql-server-dev-{{ version_number }}"
+    auth_template: pg_hba.conf.j2
+    
